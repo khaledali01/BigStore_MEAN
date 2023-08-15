@@ -1,12 +1,12 @@
 {
-  "name": "e-shop",
+  "name": "bigstore",
   "version": "1.0.0",
-  "description": "e-shop server application",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "o.abdelaaziz",
+  "author": "Khaled Ali",
   "license": "ISC",
   "dependencies": {
     "nodemon": "^2.0.16"
