@@ -16,6 +16,7 @@ function authenticationJwt() {
     isRevoked: isRevoked,
   }).unless({
     path: [
+      { url: /\/public\/uploads(.*)/, methods: ['GET', 'OPTIONS'] },
       { url: /\/api\/v1\/products(.*)/, methods: ["GET", "OPTIONS"] },
       { url: /\/api\/v1\/categories(.*)/, methods: ["GET", "OPTIONS"] },
       `${api}/users/login`,
@@ -26,7 +27,7 @@ function authenticationJwt() {
 
 async function isRevoked(req, token) {
   // token now contains payload data
-  //console.log(token);
+  console.log(token);
 
   if (!token.payload.isAdmin) {
     return true; // if the isAdmin flag in payload is false, then we reject the token
