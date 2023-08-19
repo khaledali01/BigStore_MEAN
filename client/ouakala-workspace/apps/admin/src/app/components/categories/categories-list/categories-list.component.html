@@ -1,0 +1,48 @@
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<div class="admin-page">
+    <p-card header="Categories" subheader="List of all categories">
+        <div class="grid">
+            <div class="col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+                        <p-button label="New" icon="pi pi-plus" routerLink="/categories/category-from"></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="col-12">
+                <p-table [value]="categories" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>ID</th>
+                            <th pSortableColumn="name">NAME  <p-sortIcon field="name"></p-sortIcon></th>
+                            <th>ICON</th>
+                            <th>COLOR</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-category  let-index="rowIndex">
+                        <tr>
+                            <td>{{ index+1 }}</td>
+                            <td>{{ category.name }}</td>
+                            <td><i style="font-size: 2rem;" [ngClass]="'pi pi-' + category.icon"></i></td>
+                            <td>                <i
+                              class="pi pi-circle-on"
+                              style="font-size: 2rem"
+                              [ngStyle]="{ color: category.color }"
+                            ></i></td>
+                            <td>
+                              <button pButton type="button" icon="pi pi-pencil" label="Edit" class="p-button-success mr-2" iconPos="left" (click)="onUpdateCategory(category.id)"></button>
+                              <button pButton type="button" icon="pi pi-trash" label="Delete" class="p-button-danger" iconPos="left" (click)="onDeleteCategory(category.id)"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-card>
+</div>
