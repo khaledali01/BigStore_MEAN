@@ -1,7 +1,4 @@
-# NgShop Mean Stack E-Commerce Application
-## _Using Angular & NodeJs_
-
-NgShop E-Commerce is an ecommerce application created by Nx Monorepo & Angularv14 & and nodejs,
+BigStore E-Commerce is an ecommerce application created by Nx Monorepo & Angularv14 & and nodejs,
 
 ## Features
 
@@ -19,7 +16,7 @@ NgShop E-Commerce is an ecommerce application created by Nx Monorepo & Angularv1
 
 ## Installation
 
-NgShop E-Commerce Application requires [Node.js](https://nodejs.org/) v16.13.0+ to run.
+[Node.js](https://nodejs.org/) v16.13.0+ to run.
 
 Install the dependencies and devDependencies and start the server.
 
@@ -47,8 +44,6 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 
 ## Libraries (server & client)
 
-NgShop E-Commerce Application is currently created with the following libraries.
-Instructions on how to use them in your own application are linked below.
 
 | Plugin | NPM | Version |
 | ------ | ------ | ------ |
@@ -97,14 +92,14 @@ code collocation.
 - Great CLI.
 - Rebuilding and Retesting what is Affected.
 
-##### Waht is a Monorepo?
+##### what is a Monorepo?
 A monorepo is a version-controlled code repository that holds many projects. While these projects may be related, they are often logically independent and run by different teams.
 When you woking with monorepo you can have :
 **-One repository**
 **-Multiple rpojects**
 **-Shared Libraris**
 
-##### Monorepo Exemple
+##### Monorepo Example
 ![alt text](https://i55.servimg.com/u/f55/13/79/70/03/monore10.png "monorepo")
 
 [⬆ back to top](#ngshop-mean-stack-e-commerce-application)
@@ -122,7 +117,7 @@ When you woking with monorepo you can have :
 - Coordinating a release process.
 - Setting up an entire project.
 
-## Project System desgin
+## Project System design
 ##### Project Repository
 ![alt text](https://i55.servimg.com/u/f55/13/79/70/03/projec10.png "project repository")
 [⬆ back to top](#ngshop-mean-stack-e-commerce-application)
@@ -136,51 +131,7 @@ When you woking with monorepo you can have :
 ![alt text](https://i55.servimg.com/u/f55/13/79/70/03/check_10.png "checkout workflow")
 [⬆ back to top](#ngshop-mean-stack-e-commerce-application)
 
-## Screenshots
-##### Login Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0010.png "login page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
 
-##### Dashbiard Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0115.png "dashboard page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### Users List Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0210.png "users list page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### New User Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0310.png "new user page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### Categories List Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0410.png "categories list page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### New Product Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0510.png "new product page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### Orders List Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0610.png "orders list page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### Home Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0710.png "home list page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### Products List Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0910.png "products list page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-
-##### Checkout Page
-![alt text](https://i55.servimg.com/u/f55/13/79/70/03/0810.png "checkout page")
-[⬆ back to top](#ngshop-mean-stack-e-commerce-application)
-## License
-
-MIT
-
-**Free Software, Hell Yeah!**
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 

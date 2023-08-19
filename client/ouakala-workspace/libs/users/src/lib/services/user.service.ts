@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { User } from '../models/user';
 import * as countriesLib from 'i18n-iso-countries';
+import { UsersFacade } from '../+state/users.facade';
 
 declare const require: any;
 @Injectable({
@@ -11,7 +12,7 @@ declare const require: any;
 export class UserService {
     public baseUrl = 'http://localhost:3000/api/v1/users';
 
-    constructor(private _httpClient: HttpClient) {
+    constructor(private _httpClient: HttpClient, private _usersFacade: UsersFacade) {
         countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
     }
 
@@ -35,11 +36,11 @@ export class UserService {
         return this._httpClient.delete<object>(`${this.baseUrl}/${userId}`);
     }
 
-    getUsersCount(): Observable<number> {
+    public getUsersCount(): Observable<number> {
         return this._httpClient.get<number>(`${this.baseUrl}/get/count`).pipe(map((objectValue: any) => objectValue.userCount));
     }
 
-    getCountries(): { id: string; name: string }[] {
+    public getCountries(): { id: string; name: string }[] {
         return Object.entries(countriesLib.getNames('en', { select: 'official' })).map((entry) => {
             return {
                 id: entry[0],
@@ -48,7 +49,19 @@ export class UserService {
         });
     }
 
-    getCountry(countryKey: string): string {
+    public getCountry(countryKey: string): string {
         return countriesLib.getName(countryKey, 'en');
     }
+
+    public initAppSession() {
+        this._usersFacade.buildUserSession();
+    }
+
+    observeCurrentUser() {
+        return this._usersFacade.currentUser$;
+    }
+
+    isCurrentUserAuthenticated() {
+      return this._usersFacade.isAuthenticated$;
+  }
 }
