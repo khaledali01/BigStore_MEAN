@@ -1,59 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User, UserService } from '@ouakala-workspace/users';
+import { Order, OrderService } from '@ouakala-workspace/orders';
 import { MessageService, ConfirmEventType, ConfirmationService } from 'primeng/api';
+import { ORDER_STATUS } from '../../../constants/order.status';
 
 @Component({
-    selector: 'admin-users-list',
-    templateUrl: './users-list.component.html',
+    selector: 'admin-orders-list',
+    templateUrl: './orders-list.component.html',
     styles: []
 })
-export class UsersListComponent implements OnInit {
-    public users: User[] = [];
+export class OrdersListComponent implements OnInit {
+    public orders: Order[] = [];
+    public orderStatus = ORDER_STATUS;
 
     constructor(
-        private _userService: UserService,
+        private _orderService: OrderService,
         private _messageService: MessageService,
         private _confirmationService: ConfirmationService,
         private _router: Router
     ) {}
 
     ngOnInit(): void {
-        this.getUsers();
+        this.getOrders();
     }
 
-    public getCountryName(countryCode: string) {
-        let countryName = 'Not Found';
-        if (countryCode) {
-            countryName = this._userService.getCountry(countryCode);
-            return countryName;
-        }
-        return countryName;
-    }
-
-    public getUsers() {
-        return this._userService.getUsers().subscribe((response) => {
-            this.users = response;
+    public getOrders() {
+        return this._orderService.getOrders().subscribe((response) => {
+            this.orders = response;
         });
     }
 
-    onUpdateUser(userId: string) {
-        this._router.navigate(['/users/user-from/', userId]);
+    onShowOrder(orderId: string) {
+        this._router.navigate(['/orders/order-details/', orderId]);
     }
 
-    onDeleteUser(userId: string) {
+    onDeleteOrder(orderId: string) {
         this._confirmationService.confirm({
             message: 'Are you sure that you want to perform this action?',
-            header: 'Delete User',
+            header: 'Delete Order',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                this._userService.deleteUser(userId).subscribe(
-                    (response) => {
-                        this.getUsers();
+                this._orderService.deleteOrder(orderId).subscribe(
+                    () => {
+                        this.getOrders();
                         this._messageService.add({
                             severity: 'success',
                             summary: 'Success',
-                            detail: 'User has ben deleted successfully'
+                            detail: 'Order has ben deleted successfully'
                         });
                     },
                     (error) => {
