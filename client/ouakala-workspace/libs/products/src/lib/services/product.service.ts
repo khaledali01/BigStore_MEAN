@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -15,8 +15,24 @@ export class ProductService {
         return this._httpClient.get<Product[]>(`${this.baseUrl}`);
     }
 
+    public getFilteredProductByCategoryIds(categoriesId: string[]): Observable<Product[]> {
+        let params = new HttpParams();
+        if (categoriesId) {
+            params = params.append('categories', categoriesId.join(','));
+        }
+        return this._httpClient.get<Product[]>(`${this.baseUrl}`, { params: params });
+    }
+
+    public getFeaturedProducts(count: number): Observable<Product[]> {
+        return this._httpClient.get<Product[]>(`${this.baseUrl}/get/featured/${count}`);
+    }
+
     public getProductById(productId: string): Observable<Product> {
         return this._httpClient.get<Product>(`${this.baseUrl}/${productId}`);
+    }
+
+    public getProductsByIdCategory(categoryId: string): Observable<Product[]> {
+        return this._httpClient.get<Product[]>(`${this.baseUrl}/get/category/${categoryId}`);
     }
 
     public createProduct(productData: FormData): Observable<Product> {
@@ -28,6 +44,10 @@ export class ProductService {
     }
 
     public deleteProduct(productId: string): Observable<object> {
-      return this._httpClient.delete<object>(`${this.baseUrl}/${productId}`);
-  }
+        return this._httpClient.delete<object>(`${this.baseUrl}/${productId}`);
+    }
+
+    public getProductsCount(): Observable<number> {
+        return this._httpClient.get<number>(`${this.baseUrl}/get/count`).pipe(map((objectValue: any) => objectValue.productCount));
+    }
 }
